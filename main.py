@@ -5,7 +5,6 @@ class State(Enum):
   WHITE = 1
   BlACK = 2
   PUTBLACK = 3
-  BOARDROW = 8
 
 def checkAndMarkRow(board):
   # ある配列の要素が２である時それよりあとの要素に１が続いておりその後０が現れた場所を３に置き換える処理
@@ -36,11 +35,12 @@ def markRows(board):
 def markColumns(board):
   # 二重配列のたての要素を取得し３に置き換える処理
   n = len(board)
+  boardSize = 8
   newBoard = []
-  for h in range(State.BOARDROW.value):
-    for i in range(State.BOARDROW.value):
+  for h in range(boardSize):
+    for i in range(boardSize):
       newBoard.append(board[i][h])
-      if n == State.BOARDROW.value:
+      if n == boardSize:
         markedBoard = checkAndMarkRow(newBoard)
         newBoard = []
         if State.PUTBLACK.value in markedBoard:
